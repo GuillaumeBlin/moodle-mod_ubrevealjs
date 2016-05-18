@@ -5,7 +5,7 @@ Synthesis
 ------------
 
 This project provides the excellent Reveal.js project as a moodle activity. 
-It is based on the mod_revealjs moodle activity plugin of {@matbury}. It provides a "simplier" way (for reveal.js confident user) to describe presentation content. It is also base on the use of a hidden peculiar "folder" activity named "revealjs-data" wich can be used to store all resources of the slides.
+It is based on the mod_revealjs moodle activity plugin of (@matbury). It provides a "simplier" way (for reveal.js confident user) to describe presentation content. It is also base on the use of a hidden peculiar "folder" activity named "revealjs-data" wich can be used to store all resources of the slides.
   
 Installation
 ------------
@@ -23,4 +23,4 @@ Or, extract the following zip in `your_moodle_root/mod/` as follows:
 Authors and Contributors
 ------------
 
-In 2016, Guillaume Blin (@GuillaumeBlin) based on Hakim El Hattab (@hakimel) Reveal.js and Matt Bury {{@matbury} mod_revealjs projects.
+In 2016, Guillaume Blin (@GuillaumeBlin) based on Hakim El Hattab (@hakimel) Reveal.js and Matt Bury (@matbury) mod_revealjs projects.
