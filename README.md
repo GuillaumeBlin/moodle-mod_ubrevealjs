@@ -12,12 +12,12 @@ Installation
 
 To install the plugin using git, execute the following commands in the root of your Moodle install:
 
-    git clone https://github.com/GuillaumeBlin/moodle-mod_ubrevealsjs.git your_moodle_root/mod/ubreveals
+    git clone https://github.com/GuillaumeBlin/moodle-mod_ubrevealjs.git your_moodle_root/mod/ubrevealjs
     
 Or, extract the following zip in `your_moodle_root/mod/` as follows:
 
     cd your_moodle_root/mod/
-    wget https://github.com/GuillaumeBlin/moodle-mod_ubrevealsjs/archive/master.zip
+    wget https://github.com/GuillaumeBlin/moodle-mod_ubrevealjs/archive/master.zip
     unzip -j master.zip -d ubrevealjs
 
 Authors and Contributors
