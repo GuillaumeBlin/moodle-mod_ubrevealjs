@@ -47,10 +47,6 @@ $context = context_module::instance($cmf->id);
 $ressources_url = $CFG->wwwroot."/pluginfile.php/".$context->id."/mod_folder/content/0/";
 // Print the page header.
 
-require_once($CFG->libdir . '/completionlib.php');
-$completion = new completion_info($course);
-$completion->set_module_viewed($cm);
-
 $event = \mod_ubrevealjs\event\reveal_started::create(array(
     'objectid' => $cm->id,
     'context' => context_module::instance($cm->id),
@@ -83,6 +79,7 @@ $revealjs_back_close = '<center><a href="'.$CFG->wwwroot.'/course/view.php?id='.
 		<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 		<!-- Printing and PDF exports -->
 		<link rel="stylesheet" href="http://cdn.jsdelivr.net/highlight.js/9.3.0/styles/default.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 		<script>
 			var link = document.createElement( 'link' );
 			link.rel = 'stylesheet';
@@ -120,11 +117,20 @@ $revealjs_back_close = '<center><a href="'.$CFG->wwwroot.'/course/view.php?id='.
 	<body>
 <div class="topbar"><?php echo $revealjs_back_close ?> 
 </div>
+		<?php
+			function lreplace($search, $replace, $subject){
+   				$pos = strrpos($subject, $search);
+   				if($pos !== false){
+				       	$subject = substr_replace($subject, $replace, $pos, strlen($search));
+			   	}
+			   	return $subject;
+			}
+		?>
 		<div class="reveal">
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<?php echo str_replace('_ubrevealjs_/', $ressources_url, $ubrevealjs->reveal_div_content); ?>
+				<?php echo lreplace('<section ','<section data-state="lastslide" ',str_replace('_ubrevealjs_/', $ressources_url, $ubrevealjs->reveal_div_content)); ?>
 			</div>
 		</div>
 
@@ -160,8 +166,15 @@ $revealjs_back_close = '<center><a href="'.$CFG->wwwroot.'/course/view.php?id='.
 			// Save slide show position on each slide change
             		Reveal.addEventListener( 'slidechanged', function() {
                 		docCookies.setItem('<?php echo $cm->id ?>', document.URL, 31536e3); // Save cookies for 1 year
+				console.log(docCookies.getItem('<?php echo $cm->id ?>'));
             		});
-            		// If a position saved, go to it
+			Reveal.addEventListener( 'lastslide', function() {
+    				jQuery.post('done.php',{
+					cmid : "<?php echo $cm->id?>"
+    				}).done(function(){
+					docCookies.setItem('<?php echo $cm->id ?>','', -1);
+				});
+			}, false );
             		if(docCookies.hasItem('<?php echo $cm->id ?>'))
             		{
                 		window.location.replace(docCookies.getItem('<?php echo $cm->id ?>'));
