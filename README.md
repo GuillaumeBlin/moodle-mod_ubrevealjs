@@ -23,10 +23,11 @@ Or, extract the following zip in `your_moodle_root/mod/` as follows:
 Use
 ------------
 
-You will need in each course using the module a folder resource named "". The content will be referencable in your presentation using "_ubrevealjs_/" which will be replaced at running by the write path. The presentation is defined using two fields. The first one consist in the content of the slide div.
+You will need in each course using the module a folder resource named "revealjs-data". The content will be referencable in your presentation using "\_ubrevealjs\_/" which will be replaced at running by the right path. The presentation is defined using two fields. The first one consist in the content of the slide div.
 
 For example,
 
+```
 <section> 
 content of first slide
 </section>
@@ -35,18 +36,19 @@ content of first slide
     <img class="stretch" data-src="_ubrevealjs_/sample.png" alt="sample">
     ...
 </section>
+```
 
 The second field corresponds to the javascript content of the Reveal.initialize function.
 
 For example,
-
+```
 {
     controls: true,
     progress: true,
     history: true,
     center: true,
     audio: {
-        prefix: '_ubrevealjs_/CI-1/', 
+        prefix: '_ubrevealjs_/audio/', 
         suffix: '.ogg',
         advance: 0, 
         autoplay: true,
@@ -77,22 +79,24 @@ For example,
         { src: 'plugin/sampler/sampler.js' }
     ]
 }
+```
 
 Several plugins are available:
-audio-slideshow  
-highlight-code-focus  
-math  
-multiplex  
-notes-server  
-reveal-code-focus  
-search
-highlight        
-markdown              
-menu  
-notes      
-print-pdf     
-sampler            
-zoom-js
+
+* audio-slideshow  
+* highlight-code-focus  
+* math  
+* multiplex  
+* notes-server  
+* reveal-code-focus  
+* search
+* highlight        
+* markdown              
+* menu  
+* notes      
+* print-pdf     
+* sampler            
+* zoom-js
 
 Authors and Contributors
 ------------
