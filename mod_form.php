@@ -63,13 +63,8 @@ class mod_ubrevealjs_mod_form extends moodleform_mod {
         } else {
             $this->add_intro_editor();
         }
-	$id = optional_param('update',-1, PARAM_INT);
-	$course = $DB->get_record('course_modules', array('id'=> $id));
-	$ubr=$DB->get_record('ubrevealjs', array('id'=> $course->instance));
 
-//	$mform->addElement('editor', 'reveal_div_content', get_string('ubrevealjsdivcontent', 'ubrevealjs'))->setValue( array('text' => $ubr->reveal_div_content) );
-//	$mform->setType('reveal_div_content', PARAM_RAW);
-$mform->addElement('textarea', 'reveal_div_content', get_string('ubrevealjsdivcontent', 'ubrevealjs'),'wrap="virtual" rows="50" cols="100"');
+	$mform->addElement('textarea', 'reveal_div_content', get_string('ubrevealjsdivcontent', 'ubrevealjs'),'wrap="virtual" rows="50" cols="100"');
 	$mform->addHelpButton('reveal_div_content', 'ubrevealjsdivcontent', 'ubrevealjs');
 
 	$mform->addElement('textarea', 'reveal_initialize', get_string('ubrevealjsinitialize', 'ubrevealjs'),'wrap="virtual" rows="20" cols="100"');
