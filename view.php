@@ -78,7 +78,7 @@ $revealjs_back_close = '<center><a href="'.$CFG->wwwroot.'/course/view.php?id='.
 
 		<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 		<!-- Printing and PDF exports -->
-		<link rel="stylesheet" href="http://cdn.jsdelivr.net/highlight.js/9.3.0/styles/default.min.css">
+		<link rel="stylesheet" href="css/default.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 		<script>
 			var link = document.createElement( 'link' );
