@@ -33,10 +33,12 @@ if ($id) {
     $cm         = get_coursemodule_from_id('ubrevealjs', $id, 0, false, MUST_EXIST);
     $course     = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
     $ubrevealjs  = $DB->get_record('ubrevealjs', array('id' => $cm->instance), '*', MUST_EXIST);
+    $sec = $DB->get_record('course_sections', array('id' => $cm->section), '*', MUST_EXIST);
 } else if ($n) {
     $ubrevealjs  = $DB->get_record('ubrevealjs', array('id' => $n), '*', MUST_EXIST);
     $course     = $DB->get_record('course', array('id' => $ubrevealjs->course), '*', MUST_EXIST);
     $cm         = get_coursemodule_from_instance('ubrevealjs', $ubrevealjs->id, $course->id, false, MUST_EXIST);
+    $sec = $DB->get_record('course_sections', array('id' => $cm->section), '*', MUST_EXIST);
 } else {
     error('You must specify a course_module ID or an instance ID');
 }
@@ -54,7 +56,7 @@ $event = \mod_ubrevealjs\event\reveal_started::create(array(
 ));
 $event->trigger();
 
-$revealjs_back_close = '<center><a href="'.$CFG->wwwroot.'/course/view.php?id='.$course->id.'" title="'.get_string('close','ubrevealjs').'"><i class="fa fa-times" aria-hidden="true"></i></a></center>';
+$revealjs_back_close = '<center><a href="'.$CFG->wwwroot.'/course/view.php?id='.$course->id.($sec->section?'&section='.$sec->section:'').'" title="'.get_string('close','ubrevealjs').'"><i class="fa fa-times" aria-hidden="true"></i></a></center>';
 ?>
 <!doctype html>
 <html lang="en">
